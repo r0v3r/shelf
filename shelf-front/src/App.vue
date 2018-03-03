@@ -1,23 +1,29 @@
+<style lang="less">
+
+</style>
+
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
     <router-view/>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'App'
-}
+  name: "App",
+  beforeCreate() {
+    let clientWidth = document.documentElement.clientWidth;
+    document.documentElement.style.fontSize = clientWidth / 10 + "px";
+  },
+  watch: {
+    $router:function(current, before) {
+      console.log(before, " => ", current);
+      if (current.path === "/") {
+        this.$router.push({
+          path: "/home"
+        });
+      }
+    }
+  }
+};
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
