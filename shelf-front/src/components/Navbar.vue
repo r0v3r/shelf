@@ -2,12 +2,15 @@
 @import (reference) url("../themes/default.less");
 .navbar {
   position: fixed;
+  top: 0;
+  height: 2rem;
   width: 100%;
   background-color: @wrapper-bg-color;
 }
 .searchbar {
   font-size: @font-size-lg;
-  padding: 0.2133rem 0.4rem;
+  padding: 0 0.4rem;
+  height: 1.2rem;
   display: flex;
   align-items: center;
   > *:not(:last-child) {
@@ -36,6 +39,7 @@
 .tabbar {
   padding: 0 0.4rem;
   display: flex;
+  height: 0.8rem;
   overflow-x: scroll;
   font-size: @font-size-md;
   color: @font-color-default;
@@ -45,9 +49,8 @@
   .item {
     flex-shrink: 0;
     text-align: center;
-    height: 0.8rem;
+    display: flex;
     span {
-      width: 100px;
       padding: 0 0.25rem;
       line-height: 0.8rem;
     }
@@ -90,12 +93,11 @@ export default {
       this.$emit("on-searchbar-click");
     },
     onTabClick(index) {
-      console.log(index);
       this.$el
         .querySelector(".item[active=true]")
         .setAttribute("active", false);
       this.$el.querySelectorAll(".item")[index].setAttribute("active", true);
-      this.$emit("on-tab-click");
+      this.$router.push({ path: this.tabs[index].href });
     }
   }
 };
