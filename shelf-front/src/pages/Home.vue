@@ -12,6 +12,7 @@
         :search="vm.navSearch.search"
         :nav="vm.navSearch.nav">
       </nav-search>
+      <router-view></router-view>
   </div>
 </template>
 <script>
@@ -20,6 +21,12 @@ export default {
   name: "Home",
   components: {
     NavSearch
+  },
+  beforeCreate() {
+    // redirect to recommand page for default
+    if(this.$route.path === '/'){
+      this.$router.push({path:'/rec'})
+    }
   },
   data() {
     return {
@@ -40,17 +47,17 @@ export default {
             placeholder: "搜索商品"
           },
           nav: [
-            { title: "推荐", href: "/rec" },
-            { title: "居家", href: "/" },
-            { title: "配件", href: "/" },
-            { title: "服装", href: "/" },
-            { title: "电器", href: "/" },
-            { title: "洗护", href: "/" },
-            { title: "饮食", href: "/" },
-            { title: "餐厨", href: "/" },
-            { title: "婴童", href: "/" },
-            { title: "文体", href: "/" },
-            { title: "特色区", href: "/" }
+            { title: "推荐", href: "/rec", selected:true },
+            { title: "居家", href: "/list?category=1" },
+            { title: "配件", href: "/list?category=2" },
+            { title: "服装", href: "/list?category=3" },
+            { title: "电器", href: "/list?category=4" },
+            { title: "洗护", href: "/list?category=5" },
+            { title: "饮食", href: "/list?category=6" },
+            { title: "餐厨", href: "/list?category=7" },
+            { title: "婴童", href: "/list?category=8" },
+            { title: "文体", href: "/list?category=9" },
+            { title: "特色区", href: "/special" }
           ]
         }
       }

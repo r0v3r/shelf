@@ -52,14 +52,9 @@ header {
             <span>{{ search.placeholder}}</span>
         </a>
     </div>
-    <!-- <scroller lock-y :scrollbar-x=false>
-      <div class="navbar">
-        <div class="nav-tab" v-for="i in 7" :key="i"><span>{{' ' + i + ' '}}</span></div>
-      </div>
-    </scroller> -->
     <scroller lock-y :scrollbar-x=false>
       <tab class="tab">
-        <tab-item v-for="(item, key) in nav" :key="key" @on-item-click="onItemClick">{{ item.title }}</tab-item>
+        <tab-item v-for="(item, key) in nav" :key="key" :selected="item.selected" @on-item-click="onItemClick">{{ item.title }}</tab-item>
       </tab>
     </scroller>
 </header>
