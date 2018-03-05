@@ -5,23 +5,42 @@ import Home from "@/pages/Home";
 import Recommand from "@/pages/Recommand";
 import List from "@/pages/List";
 
+import Discover from "@/pages/Discover";
+
 Vue.use(Router);
 
 export default new Router({
+  // mode: "history",
   routes: [
     {
       path: "/",
+      redirect: {
+        path: "/home/recommand"
+      }
+    },
+    {
+      path: "/home",
+      redirect: {
+        path: "/home/recommand"
+      }
+    },
+    {
+      path: "/home",
       component: Home,
       children: [
         {
-          path: "rec",
+          path: "/home/recommand",
           component: Recommand
         },
         {
-          path: "list",
+          path: "/home/list",
           component: List
         }
       ]
+    },
+    {
+      path: "/discover",
+      component: Discover
     }
   ]
 });
