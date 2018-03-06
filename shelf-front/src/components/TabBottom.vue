@@ -1,12 +1,31 @@
 <template>
   <div class="tab-bar">
       <tabbar>
-        <tabbar-item v-for="(tab, index) in tabs"
-        :key="index" :selected="tab.selected" :link="tab.link">
-          <img v-if="tab.selected" slot="icon" :src="tab.img.selected">
-          <img v-else slot="icon" :src="tab.img.normal">
+        <tabbar-item selected>
+          <img slot="icon-active" src="../assets/icon_active/all.svg">
+          <img slot="icon" src="../assets/icon_nomal/all.svg">
+          <span slot="label">首页</span>
         </tabbar-item>
-        <span>{{tab.label}}</span>
+        <tabbar-item>
+          <img slot="icon-active" src="../assets/icon_active/earth.svg">
+          <img slot="icon" src="../assets/icon_nomal/earth.svg">
+          <span slot="label">发现</span>
+        </tabbar-item>
+        <tabbar-item>
+          <img slot="icon-active" src="../assets/icon_active/Category.svg">
+          <img slot="icon" src="../assets/icon_nomal/Category.svg">
+          <span slot="label">分类</span>
+        </tabbar-item>
+        <tabbar-item>
+          <img slot="icon-active" src="../assets/icon_active/cart.svg">
+          <img slot="icon" src="../assets/icon_nomal/cart.svg">
+          <span slot="label">购物车</span>
+        </tabbar-item>
+        <tabbar-item>
+          <img slot="icon-active" src="../assets/icon_active/account.svg">
+          <img slot="icon" src="../assets/icon_nomal/account.svg">
+          <span slot="label">我的</span>
+        </tabbar-item>
       </tabbar>
   </div>
 </template>
@@ -17,7 +36,6 @@ export default {
   name: "TabBottom",
   data() {
     return {
-      selected: [false, false, false, false, false],
       tabs: [
         {
           label: "首页",
